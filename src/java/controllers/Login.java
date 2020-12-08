@@ -12,6 +12,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import dbutils.Database;
+import models.Customer;
 
 /**
  *
@@ -22,6 +24,8 @@ public class Login extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        Database db= new Database();
+        int result = db.insertCustomer(new Customer("chackie","Chan","1111","chacki@.ch"),"customers");
         response.setContentType("text/html;charset=UTF-8"); // servlet
         try (PrintWriter out = response.getWriter()) {
             /* for the browser */
@@ -32,6 +36,7 @@ public class Login extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Login - Precious EShop" + "</h1>");
+            out.println("<p>Inserted customers: "+result+"</p>");
             out.println(" <div>My Precious... EShop</div>\n" +
                         "        <form action=\"/PreciousEShop/login\" method=\"POST\">\n" +
                         "            Username :<input type=\"text\" name=\"username\" value=\"\" /><br/>\n" +
@@ -40,6 +45,7 @@ public class Login extends HttpServlet {
                         "        </form>");
             out.println("</body>");
             out.println("</html>");
+            
 
         }
     }
