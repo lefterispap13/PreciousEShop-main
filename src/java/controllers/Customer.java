@@ -7,6 +7,7 @@ package controllers;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,7 +29,11 @@ public class Customer extends HttpServlet{
         if(customerService == null) customerService=new CustomerService();
         int result=customerService.insert(new models.Customer("Bruce","Lee","2222","bruce@kick.com"));
 //        super.doGet(req, resp); //To change body of generated methods, choose Tools | Templates.
-         resp.setContentType("text/html;charset=UTF-8"); // servlet
+        showHtml("<p>Inserted Records for Customer: "+result+"</p>",resp);        
+    }
+    
+    protected void showHtml(String body,HttpServletResponse resp) throws IOException{
+        resp.setContentType("text/html;charset=UTF-8"); // servlet
         try (PrintWriter out = resp.getWriter()) {
             /* for the browser */
             out.println("<!DOCTYPE html>");
@@ -38,7 +43,6 @@ public class Customer extends HttpServlet{
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Login - Precious EShop" + "</h1>");
-            out.println("<p>Inserted Customer: "+result+"</p>");
             out.println("</body>");
             out.println("</html>");
             

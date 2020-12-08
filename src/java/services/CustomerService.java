@@ -15,6 +15,7 @@ import models.Customer;
  */
 public class CustomerService implements ICustomerService{
     CustomerDao customerDao;
+    // CustomerDaoMSSQL customerDaoMSSql;
     
     public int insert(Customer customer){
         if (customerDao == null) customerDao= new CustomerDao();
