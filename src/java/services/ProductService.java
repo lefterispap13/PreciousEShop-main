@@ -5,9 +5,7 @@
  */
 package services;
 
-import dao.CustomerDao;
 import java.util.List;
-import models.Customer;
 import models.Product;
 import dao.ProductDao;
 

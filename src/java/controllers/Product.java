@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import services.ProductService;
+import services.ResultService;
 /**
  *
  * @author Home
@@ -23,6 +24,7 @@ import services.ProductService;
 @WebServlet(name="product",urlPatterns={"/product"})
 public class Product extends HttpServlet{
     ProductService productService;
+    ResultService resultService;
     
     
     @Override
@@ -39,11 +41,14 @@ public class Product extends HttpServlet{
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) 
             throws ServletException, IOException {
         if(productService ==null) productService=new ProductService();
+        if(resultService == null) resultService=new ResultService();
         models.Product product=new models.Product();
         product.setName(req.getParameter("name"));
         product.setPrice(Double.parseDouble(req.getParameter("price")));
         product.setQuantity(Integer.parseInt(req.getParameter("quantity")));
-        productService.insert(product);
+        int result = productService.insert(product);
+        resultService.showInsertResult(req, resp, result, product);
+        
 
     }
     
