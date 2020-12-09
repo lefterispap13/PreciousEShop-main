@@ -6,6 +6,7 @@
 package dao;
 
 import static dao.Database.con;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
@@ -21,33 +22,26 @@ public class ProductDao extends Database implements IProductDao{
     private Database db;
      @Override
      public int insert(Product product,String tableName){
+         int result=0;
          if (db == null) db =new Database();
         //INSERT INTO `products`(`name`, `price`, `quantity`) 
         // VALUES("Fixit Kit", "187,65", "1")
-        int result = 0;
-        StringBuilder sb = new StringBuilder();
         
-        sb.append("INSERT INTO ");
-        sb.append("`"); sb.append(tableName); sb.append("`");
-        sb.append("(`name`, `price`, `quantity`)");
-        sb.append(" VALUES(");
-        sb.append("\""); sb.append(product.getName()); sb.append("\""); sb.append(",");
-        sb.append("\""); sb.append(product.getPrice()); sb.append("\""); sb.append(",");
-        sb.append("\""); sb.append(product.getQuantity()); sb.append("\"");
-        sb.append(")");
+        String query;
+        query = "INSERT INTO `"+tableName+"`";
+        query += "(`name`, `price`, `quantity`) ";
+        query += "VALUES(?,?,?)";
+        
+//        PreparedStatement ps;
         try {
-            //        System.out.println(sb.toString());
-            if(con!= null ){
-                statement = con.createStatement();
-                result = statement.executeUpdate(sb.toString());
-            }
-            else{
-                System.out.println("Connection problems");}
-            
-        
+            prStatement = con.prepareStatement(query);
+            prStatement.setString(1, product.getName());
+            prStatement.setDouble(2, product.getPrice());
+            prStatement.setInt(3, product.getQuantity());
+            result=  (prStatement.executeUpdate());
         } catch (SQLException ex) {
-            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            Logger.getLogger(ProductDao.class.getName()).log(Level.SEVERE, null, ex);     
+        }       
         return(result); 
      }
     @Override
