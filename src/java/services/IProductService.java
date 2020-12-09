@@ -15,8 +15,8 @@ import models.Product;
 public interface IProductService {
     
      public int insert(Product product);
-    public int update(int productId);
-    public int update(String name, double price,int quantity);
+    public int update(int productId,Product product);
+    public int update(String name, double price,Product product);
     public int update(String name);
     public int update(double price);
     public int update1(int quantity);

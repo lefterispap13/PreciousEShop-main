@@ -50,34 +50,42 @@ public class ProductDao extends Database implements IProductDao{
         }
         return(result); 
      }
-    public int update(int productId){
+    @Override
+    public int update(int productId,Product product){
                 throw new UnsupportedOperationException("Not supported yet.");
 
     }
-    public int update(String name, double price,int quantity){
+    @Override
+    public int update(String name, double price,Product product){
                 throw new UnsupportedOperationException("Not supported yet.");
 
     }
+    @Override
     public int update(String name){
                 throw new UnsupportedOperationException("Not supported yet.");
 
     }
+    @Override
     public int update(double price){
                 throw new UnsupportedOperationException("Not supported yet.");
 
     }
+    @Override
     public int update1(int quantity){
                 throw new UnsupportedOperationException("Not supported yet.");
 
     }
+    @Override
     public int delete(int productId){
                 throw new UnsupportedOperationException("Not supported yet.");
 
     }
+    @Override
     public List<Product> all(){
                 throw new UnsupportedOperationException("Not supported yet.");
 
     }
+    @Override
     public Product getProductById(int id){
                 throw new UnsupportedOperationException("Not supported yet.");
 

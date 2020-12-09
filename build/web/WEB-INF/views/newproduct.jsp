@@ -9,9 +9,16 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>New Product - Precious EShop</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>New Product Data</h1>
+        <form name="newproduct" action="/product" method="POST">
+            <input type="text" name="name" value="" />
+            <input type="text" name="price" value="" size="4" maxlength="4"/>
+            <input type="text" name="quantity" value="" size="3" />
+            <input type="submit" value="Save Prroduct" name="saveproduct"/>
+        </form>
     </body>
 </html>
+

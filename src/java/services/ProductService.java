@@ -23,11 +23,11 @@ public class ProductService {
          if (productDao == null) productDao= new ProductDao();
         return (productDao.insert(product,"products"));
     }
-    public int update(int productId){
+    public int update(int productId,Product product){
                 throw new UnsupportedOperationException("Not supported yet.");
 
     }
-    public int update(String name, double price,int quantity){
+    public int update(String name, double price,Product product){
                 throw new UnsupportedOperationException("Not supported yet.");
 
     }
