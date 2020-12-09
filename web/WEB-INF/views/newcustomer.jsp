@@ -14,10 +14,10 @@
     <body>
         <h1>New Customer</h1>
         <form name="newcustomer" action="/customer" method="POST">
-            <input type="text" name="first name" value="" />
-            <input type="text" name="last name" value="" />
-            <input type="text" name="tel" value="" />
-            <input type="text" name="email" value="" />
+           First Name:  <input type="text" name="first name" value="" />
+           Last Name: <input type="text" name="last name" value="" />
+           Tel: <input type="text" name="tel" value="" />
+           Email: <input type="text" name="email" value="" />
         </form>  
     </body>
 </html>

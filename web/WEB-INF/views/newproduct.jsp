@@ -13,11 +13,11 @@
     </head>
     <body>
         <h1>New Product Data</h1>
-        <form name="newproduct" action="/product" method="POST">
-            <input type="text" name="name" value="" />
-            <input type="text" name="price" value="" size="4" maxlength="4"/>
-            <input type="text" name="quantity" value="" size="3" />
-            <input type="submit" value="Save Prroduct" name="saveproduct"/>
+        <form name="newproduct" action="<%= request.getContextPath() %>/product" method="POST">
+            Name:            <input type="text" name="name" value="" /><br>
+            Price:           <input type="text" name="price" value="" size="4" maxlength="4"/><br>
+            Quantity:        <input type="text" name="quantity" value="" size="3" /><br>
+            <input type="submit" value="Save Product" name="saveproduct"/>
         </form>
     </body>
 </html>

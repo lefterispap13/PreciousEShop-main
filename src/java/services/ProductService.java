@@ -21,7 +21,8 @@ public class ProductService {
     public int insert(Product product){
         
          if (productDao == null) productDao= new ProductDao();
-        return (productDao.insert(product,"products"));
+         int result = (productDao.insert(product,"products"));
+         return result;
     }
     public int update(int productId,Product product){
                 throw new UnsupportedOperationException("Not supported yet.");
